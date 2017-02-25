@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<title>{{ site_title }}</title>
+		<link rel="stylesheet" href="{{ theme_url }}/assets/css/main.css" />
+		<script type="application/ld+json">
+		{
+		  "@context" : "http://schema.org",
+		  "@type" : "WebSite",
+		  "name" : "{{ site_title }}",
+		  "url" : "{{ base_url }}"
+		}
+		</script>
+	</head>
+	<body>
+		<div id="page-wrapper">
+			<div id="wrapper">
+				<section class="panel banner right">
+					<div class="content color0 span-3-75">
+						<h1 class="major">{{ site_title }}</h1>
+						<p>{{ content }}</p>
+						<ul class="icons">
+						{% for link,icon in meta.social %}
+							<li><a href="{{ link }}" class="icon fa-{{ icon }}"><span class="label">{{ icon }}</span></a></li>
+						{% endfor %}
+						</ul>
+					</div>
+					<div class="image filtered span-1-75" data-position="25% 25%">
+						<img src="{% if meta.image %}{{ meta.image }}{% else %}{{ theme_url }}/images/pic01.jpg{% endif %}" alt="{{ site_title }}" />
+					</div>
+				</section>
+				<div class="copyright">&copy; {{ site_title }}. Design: <a href="https://html5up.net">HTML5 UP</a> | Ported By <a href="https://besrourms.github.io/" target="_blank" rel="noreferrer">Mohamed Safouan Besrour</a></div>
+			</div>
+		</div>
+		<script src="{{ theme_url }}/assets/js/jquery.min.js"></script>
+		<script defer src="{{ theme_url }}/assets/js/skel.min.js"></script>
+		<script defer src="{{ theme_url }}/assets/js/main.js"></script>
+	</body>
+</html>
