@@ -5,13 +5,19 @@ Download the ethereal folder, extract it to the themes folder of your Pico insta
 
 `$config['theme'] = 'ethereal';`
 
+For Pico CMS >= 2.0 add to config/config.yml
+```sh
+theme: ethereal
+```
+(If the file does not exist, create it. For more info see config/config.yml.template)
+
 For the content download our `index.md`, upload it in the content folder and make your changes.
 
 You can add as many social icons as you want using the follow syntax:
 
 ```
 Social:
-  http://tn.linkedin.com/in/MohamedSafouanBesrour: linkedin
+  https://tn.linkedin.com/in/MohamedSafouanBesrour: linkedin
   https://github.com/BesrourMS: github
   url: icon
 ```
@@ -29,8 +35,8 @@ Recommended Sizes:
 
 `pic01.jpg => 525x900 px | bg.jpg 1440x900 px`
 
-#### Demo: https://html5up.net/uploads/demos/ethereal/
+#### Demo: [link](https://html5up.net/uploads/demos/ethereal/)
 
-## Screenshot
+#### Screenshot
 
-![Ethereal Screenshot](http://img11.hostingpics.net/pics/910740etherealpic.jpg)
+![Ethereal Screenshot](https://www.zupimages.net/up/20/37/mvg0.png)
