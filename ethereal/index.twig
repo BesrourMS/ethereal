@@ -31,6 +31,19 @@
 						<img src="{% if meta.image %}{{ meta.image }}{% else %}{{ theme_url }}/images/pic01.jpg{% endif %}" alt="{{ site_title }}" />
 					</div>
 				</section>
+				{% for page in pages("sub") if not page.hidden %}
+    					<section class="panel spotlight medium right" id="{{ page.title }}">
+    						<div class="content">
+    							<h2 class="major">{{ page.title }}</h2>
+							<div class="period">{{ page.meta.period }}</div>
+    							<p>{{ page.id|content }}</p>
+    						</div>
+        					<div class="image filtered tinted" data-position="top left">
+    					    		<img src="{% if page.meta.image %}{{ page.meta.image }}{% else %}{{ theme_url }}/images/pic01.jpg{% endif %}" alt="{{ site_title }}" />
+        					</div>
+    					</section>
+    				{% endfor %}
+    			
 				<div class="copyright">&copy; {{ site_title }}. Design: <a href="https://html5up.net">HTML5 UP</a> | Ported By <a href="https://besrourms.github.io/" target="_blank" rel="noreferrer">Mohamed Safouan Besrour</a></div>
 			</div>
 		</div>
