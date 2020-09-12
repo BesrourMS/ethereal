@@ -110,16 +110,6 @@
 					}, 100);
 				});
 
-			// Orientation change
-				$window.on('orientationchange, function() {
-					if (skel.vars.mobile && skel.vars.touch) {
-						if ($window.screen.orientation.startsWth('landscape')) {
-							settings.touchscreen.enabled = true
-						} else {
-							settings.touchscreen.enabled = false
-						}
-				});
-
 			// Tweaks/fixes.
 
 				// Mobile: Disable scroll stuff.
@@ -130,8 +120,8 @@
 						settings.scrollZones.enabled = false;
 						settings.dragging.enabled = false;
 				
-						// Touchscreen: Enable scroll stuff.
-						if(skel.vars.touch && $window.screen.orientation.startsWth('landscape')) {
+						// Touchscreen
+						if(skel.vars.touch && Math.abs(window.orientation) === 90) {
 							settings.touchscreen.enabled = true;
 						}
 
@@ -644,8 +634,8 @@
 								.on('touchstart', function(event) {
 
 									// Disable on multitouch
-										if (event.changedTouches.length > 1)
-											break;
+										if (event.originalEvent.changedTouches.length > 1)
+											return;
 
 									// Clear momentum interval.
 										clearInterval(momentumIntervalId);
@@ -659,7 +649,7 @@
 
 									// Initialize and reset vars.
 										startScroll = $document.scrollLeft();
-										startX = event.changedTouches[0].clientX;
+										startX = event.originalEvent.changedTouches[0].clientX;
 										previousX = startX;
 										currentX = startX;
 										distance = 0;
@@ -689,7 +679,7 @@
 											return;
 
 									// Velocity.
-										currentX = event.changedTouches[0].clientX;
+										currentX = event.originalEvent.changedTouches[0].clientX;
 
 									// Scroll page.
 										$document.scrollLeft(startScroll + (startX - currentX));
@@ -713,7 +703,7 @@
 								.on('touchend touchcancel', function(event) {
 
 									var m;
-
+	
 									// Not dragging? Bail.
 										if (!dragging)
 											return;
