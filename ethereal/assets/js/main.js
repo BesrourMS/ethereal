@@ -110,9 +110,22 @@
 					}, 100);
 				});
 
+			// Orientation change: Enable touch events in landscape mode
+				$window.on('orientationchange', function() {
+					if (skel.vars.mobile && skel.vars.touch) {
+						if (Math.abs(window.orientation) === 90 ||
+							Math.abs(screen.orientation.angle) === 90
+						) {
+							settings.touchscreen.enabled = true
+						} else {
+							settings.touchscreen.enabled = false
+						}
+					}
+				});
+
 			// Tweaks/fixes.
 
-				// Mobile: Disable scroll stuff.
+				// Mobile: Disable scroll stuff and enable touch events.
 					if (skel.vars.mobile) {
 
 						settings.keyboardShortcuts.enabled = false;
@@ -121,7 +134,10 @@
 						settings.dragging.enabled = false;
 				
 						// Touchscreen
-						if(skel.vars.touch && Math.abs(window.orientation) === 90) {
+						if(skel.vars.touch && (
+							Math.abs(window.orientation) === 90 || // Safari
+							Math.abs(screen.orientation.angle) === 90) // Firefox
+						) {
 							settings.touchscreen.enabled = true;
 						}
 
